@@ -9,7 +9,7 @@ public class StringManipulator
         int valido = cadena.indexOf(caracter);
         int invalido = cadena.indexOf(caracter, valido+1);
 
-        if(valido != -1)
+        if(invalido == -1)
         {
             return valido;
         }
@@ -24,7 +24,7 @@ public class StringManipulator
         int valido = cadena.indexOf(cadena2);
         int invalido = cadena.indexOf(cadena, valido+1);
 
-        if(valido != -1)
+        if(invalido == -1)
         {
             return valido;
         }
