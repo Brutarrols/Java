@@ -1,51 +1,61 @@
 import java.beans.*;
+import java.util.ArrayList;
+
 public class Calculator implements java.io.Serializable{
 	
-	private double num1, num2;
-	private String operator;
+	private static final long serialVersionUID = 1L;
+	private double result;
+	private double var;
+	ArrayList<Double> num = new ArrayList<>();
+	ArrayList<Character> op = new ArrayList<>();
 	
-	public void setOperandOne(double num)
-	{
-		this.num1 = num;
+	public Calculator() {}
+	
+	public void performOperation(double x) {
+		num.add(x);
 	}
 	
-	public void setOperation(String operator)
-	{
-		this.operator = operator;
-	}
-	
-	public void setOperandTwo(double num)
-	{
-		this.num2 = num;
-	}
-	
-	public double performOperation()
-	{
+	public void performOperation(char y) {
+		op.add(y);
 		
-		/*String operation = this.num1 + this.operator+ this.num2;
-		return Double.parseDouble(operation);*/
-		
-		
-		switch(this.operator)
-		{
-			case "+":  return this.num1 + this.num2; 
+		if(num.size() >= 2 && y == '=') {
+			while(op.size() > 1) {
+				for(int i=0; i<op.size(); i++) {
+				
+					if(op.get(i) == '*') {
+						var = num.get(i) * num.get(i+1);
+						num.set(i, var);
+						num.remove(i+1);
+						op.remove(i);
+					}
+					if(op.get(i) == '/') {
+						var = num.get(i) / num.get(i+1);
+						num.set(i, var);
+						num.remove(i+1);
+						op.remove(i);
+					}	
+				}
 			
-			case "-":  return this.num1 + this.num2; 
-			
-			case "*":  return this.num1 + this.num2; 
-			
-			case "/":  return this.num1 + this.num2; 
-			
-			default: return 0; 
+				for(int j=0; j<op.size(); j++) {
+				
+					if(op.get(j) == '+') {
+						var = num.get(j) + num.get(j+1);
+						num.set(j, var);
+						num.remove(j+1);
+						op.remove(j);
+					}
+					if(op.get(j) == '-') {
+						var = num.get(j) - num.get(j+1);
+						num.set(j, var);
+						num.remove(j+1);
+						op.remove(j);
+					}
+				}
+			}
+			this.result = num.get(0);
 		}
-		
-		
 	}
-	public double getResult()
-	{
-		
-		return performOperation();
+	public void getResults() {
+		System.out.println(result);
 	}
-	
-	
 }
