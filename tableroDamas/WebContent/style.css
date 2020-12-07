@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.blue
+{
+	height : 50px;
+	width : 50px;
+	background-color: blue;
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	line-height: 0;
+
+}
+.pink
+{
+	height : 50px;
+	width : 50px;
+	background-color: magenta;
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	line-height: 0;
+}
