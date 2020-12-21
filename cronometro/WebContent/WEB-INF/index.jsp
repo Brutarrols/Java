@@ -23,10 +23,13 @@
 			<td>Stop</td>
 			<td>Total</td>
 		</tr>
+		<c:set value="0" var="i"/>
 		<c:forEach var="tiempo" items="${tiempos.getRecordStart()}">
 			<tr>
-				<td><c:out value="${tiempo }"></c:out> </td>
-			</tr>
+				<td><c:out value="${tiempo.getHora()}"/>:<c:out value="${tiempo.getMinutos()}"/>:<c:out value="${tiempo.getSegundos()}"/></td>
+				<td><c:out value="${tiempos.getRecordFinish().get(i).getHora()}"/>:<c:out value="${tiempos.getRecordFinish().get(i).getMinutos()}"/>:<c:out value="${tiempos.getRecordFinish().get(i).getSegundos()}"/></td>
+				<td><c:out value="${tiempos.getTotalRecord().get(i).getHora()}"/>:<c:out value="${tiempos.getTotalRecord().get(i).getMinutos()}"/>:<c:out value="${tiempos.getTotalRecord().get(i).getSegundos()}"/></td>
+				<c:set value="${i+1}" var="i"/>
 		</c:forEach>
 	</table>
 	
